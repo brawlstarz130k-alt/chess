@@ -64,7 +64,7 @@ jobs:
                   targetCompatibility JavaVersion.VERSION_17
               }
           }
-          dependencies { implementation 'androidx.appcompat:appcompat:1.7.0' }
+          dependencies {}
           EOF
 
           cat << 'EOF' > apk_build/app/src/main/AndroidManifest.xml
@@ -94,7 +94,7 @@ jobs:
           cat << 'EOF' > apk_build/app/src/main/res/values/styles.xml
           <?xml version="1.0" encoding="utf-8"?>
           <resources>
-              <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+              <style name="AppTheme" parent="android:Theme.DeviceDefault.NoActionBar">
                   <item name="android:statusBarColor">#060911</item>
                   <item name="android:navigationBarColor">#060911</item>
                   <item name="android:windowBackground">#060911</item>
@@ -116,14 +116,14 @@ jobs:
           cat << 'EOF' > apk_build/app/src/main/java/com/grandmaster/studio/MainActivity.java
           package com.grandmaster.studio;
           import android.annotation.SuppressLint;
+          import android.app.Activity;
           import android.os.Bundle;
           import android.webkit.WebChromeClient;
           import android.webkit.WebSettings;
           import android.webkit.WebView;
           import android.webkit.WebViewClient;
-          import androidx.appcompat.app.AppCompatActivity;
 
-          public class MainActivity extends AppCompatActivity {
+          public class MainActivity extends Activity {
               private WebView webView;
               @SuppressLint("SetJavaScriptEnabled")
               @Override
@@ -157,3 +157,4 @@ jobs:
         with:
           name: Grandmaster-Studio-APK
           path: apk_build/app/build/outputs/apk/debug/app-debug.apk
+        
